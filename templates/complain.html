@@ -1,0 +1,183 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+    <title>Swipe2Clean</title>
+
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,100,300,700" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/complain.css' %}" /> 
+    <link rel="icon" type="image/x-icon" href="{% static 'img/logo.jpg' %}">
+   
+</head>
+
+<body>
+    <section class="ftco-section">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center mb-5">
+                    <h2 class="heading-section">Complain ID: GHI-78901234</h2>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-12">
+                    <div class="wrapper">
+                        <div class="row mb-5">
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-user"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>{{ user}}</span><br> Male, 19 </p>
+                                    </div> <a href="#">Update User Details!</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-map-marker"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Location:</span>Lane 3, Prabhat Nagar, Mathura, Uttar Pradesh 281001
+                                        </p>
+                                    </div><a href="#">Update location!</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-phone"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Contact Number:</span> <br> +91 123 123 1234</p>
+                                    </div> <a href="#">Update Contact Number!</a>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="dbox w-100 text-center">
+                                    <div class="icon d-flex align-items-center justify-content-center">
+                                        <span class="fa fa-id-card-o"></span>
+                                    </div>
+                                    <div class="text">
+                                        <p><span>Adhaar Number:</span> <br> 1234 1234 1234 1234</p>
+                                    </div> <a href="#">Log Out!</a>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="row no-gutters">
+                            <div class="col-md-7">
+                                <div class="contact-wrap w-100 p-md-5 p-4" style="border-style: double;">
+                                    <h3 class="mb-4">Enter Details</h3>
+
+                                    <form method="POST" id="contactForm" name="contactForm" class="contactForm">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label class="label" for="name">Select Waste Type:*</label>
+                                                    <select>
+                                                        <option value=" ">Select the issue </option>
+                                                        <option value="Plastic waste">Plastic waste</option>
+                                                        <option value="Sewage Problem">Sewage Problem</option>
+                                                        <option value="Garbage">Garbage</option>
+
+                                                        <option value="Other">Other</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <form method="post">
+                                                {% csrf_token %}
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="#">Additional Details</label>
+                                                        <br> <textarea name="comment"
+                                                            placeholder="Enter short summary of issue (max 200 characters)."
+                                                            maxlength="200"></textarea>
+                                                            <br>
+                                                            <label for="#">Phone No:</label>
+                                                            <input type="number" placeholder="Phone No" name="num">
+                                                            <br>
+                                                            <label for="#">Email: </label>
+                                                            <input type="email" name="okmail">
+                                                            <br>
+                                                            <label for="#">Address: </label>
+                                                            <input type="text" name="addr">
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label class="label" for="#">Upload Picture</label>
+                                                        <input type='file' onchange="readURL(this);"
+                                                            accept="image/*;capture=camera" name="image"/>
+                                                        <img id="issue_img" />
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <input type="checkbox" name="terms" value="check" id="terms" />I
+                                                        have read and agree
+                                                        to the
+                                                        <a href="#" target="">Terms and Conditions</a>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <!-- <input type="submit" value="Submit" class="btn btn-primary"> -->
+                                                        
+                                                        <a href="{% url 'YourPost' %}"><input type="submit" value="Submit" class="btn btn-primary"></a>
+                                                        <div class="submitting"></div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-5 d-flex align-items-stretch">
+                                <div class="container">
+                                    <div id="map">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+   
+    <script>
+		 console.log("java on");
+
+var map = L.map('map').setView([27.482269461838406, 77.66629772399595], 14);
+// Add OpenStreetMap tile 
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+	attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors',
+}).addTo(map);
+var marker1 = L.marker([27.482269461838406, 77.66629772399595]).addTo(map);
+var marker2 = L.marker([27.495453060856512, 77.68070170940764]).addTo(map);
+var marker3 = L.marker([27.48533985013022, 77.68847301291039]).addTo(map);
+var marker4 = L.marker([27.481114644308978, 77.69954223086752]).addTo(map);
+var marker5 = L.marker([27.499330828832314, 77.68532656102064]).addTo(map);
+var marker6 = L.marker([27.49290973355608, 77.65689461413675]).addTo(map);
+var marker7 = L.marker([27.481569386692744, 77.67503148085193]).addTo(map);
+var marker8 = L.marker([27.477693212848987, 77.6640333516139]).addTo(map);
+var marker9 = L.marker([27.461832876757647, 77.67211120410315]).addTo(map);
+marker1.bindTooltip("🙁 not clean").openPopup();
+marker2.bindTooltip("😍 clean and green").openPopup();
+marker3.bindTooltip("😊 neat and clean").openPopup();
+marker4.bindTooltip("😍 clean and green").openPopup();
+marker5.bindTooltip("😓 not so clean").openPopup();
+marker6.bindTooltip("😍 clean and awesome").openPopup();
+marker7.bindTooltip("🤗 clean and nice").openPopup();
+marker8.bindTooltip("😓 not so clean").openPopup();
+marker9.bindTooltip("🙁 not clean").openPopup();
+	</script>
+   
+</body>
+
+</html>

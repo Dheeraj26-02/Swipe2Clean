@@ -1,0 +1,329 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Swipe2Clean</title>
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet"> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"> -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="icon" type="image/x-icon" href="static\img\logo.jpg">
+</head>
+<body>
+    <div class="wrapper" >
+        <header >
+            <div class="navbar">
+                <div class="logo-container">
+                    <img src="{% static 'img/logo.jpg' %}" class="logo">
+                    <div class="logo-text">Swipe2Clean</div>
+                </div>
+                <div class="nav-items">
+                    <div><a href="#home">Home</a></div>
+                    <div><a href="#Events">Events</a></div>
+                    <div><a href="#Contact">Contact</a></div>
+                    <div><a href="http://127.0.0.1:8000/admin/login/?next=/admin/">Admin</a></div>
+                    <div><a href="{% url 'Business' %}">Business</a></div>
+                </div>  
+            </div>
+        </header>
+        <form method="post">
+            {% csrf_token %}
+            <div id="feedback-main">
+                <div id="feedback-div">
+                  <form action="" method="post" class="form" id="feedback-form1" name="form1" enctype="multipart/form-data">
+                    <p class="name">
+                      <input name="userr" type="name" class="validate[required,custom[onlyLetter],length[0,100]] feedback-input" required placeholder="Name" id="feedback-name" />
+                    </p>
+              
+                    <p class="email">
+                      <input name="uemail" type="email" class="validate[required,custom[email]] feedback-input" id="feedback-email" placeholder="Email" required />
+                    </p>
+              
+                    <p class="text">
+                      <textarea name="ucomment" type="comment" class="validate[required,length[6,300]] feedback-input" id="feedback-comment" required placeholder="Hey, I really love the site but I believe that you could incorporate some ..... and also get rid of the ...... on the section."></textarea>
+                    </p>
+                    <div class="feedback-submit">
+                      <input type="submit" value="SEND" id="feedback-button-blue" />
+                      <div class="feedback-ease"></div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+        </form>
+          
+          <button id="popup" class="feedback-button" onclick="toggle_visibility()" name="Feedback">Feedback</button>
+
+
+
+
+
+        <div class="hero-section" id="home">
+            <div class="absolute faded-text">Jan Dhan Worriors</div>
+
+            <div class="hero-section-left">
+                <div class="hero-section-heading " >स्वच्छता सर्वोपरी</div>
+                
+                <div class="hero-section-sub-heading">
+                    <span class="tagline"></span>
+                </div>
+
+                <div class="hero-section-description">
+                    "स्वच्छता मिशन को सफलतापूर्व पूरा करने के लिए आपका सहयोग जरूरी है।
+                     कृपा साथ देने का नया रख कर, हम सब मिल कर एक साफ और स्वस्थ भविष्य बना सकते हैं।"
+                    </div>
+                    
+                    <div class="btn" id="btn"><a href="login1">Login/SignUp</a></div>
+                    
+                    <div class="bgimg-right"><img src="{% static 'img/flag.png' %}" alt=""></div>
+            </div>
+
+            <div class="hero-section-right">
+                <div class="background-image"><img src="{% static 'img/bgimage.jpg' %}" alt=""></div>
+        </div>
+        </div>
+        <div class="event-section" id="Events">
+
+            <h2 class="page-header">Events</h2>
+           
+            <div class="container">
+                <div class="item-container">
+                    <div class="img-container">
+                        <img src="{% static 'img/event-1.png' %}" alt="Event image">
+                    </div>
+        
+                    <div class="body-container">
+                        <div class="overlay"></div>
+        
+                        <div class="event-info">
+                            <p class="title">Cleanathon</p>
+                            <div class="separator"></div>
+                            <p class="info">Mathura</p>
+                            <p class="price">Free</p>
+        
+                            <div class="additional-info">
+                                <p class="info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Gla university, Mathura
+                                </p>
+                                <p class="info">
+                                    <i class="far fa-calendar-alt"></i>
+                                    Sat, Oct 14, 10:00 AM EDT
+                                </p>
+        
+                                <p class="info description">
+                                    Welcome! A community-driven event dedicated to environmental stewardship.
+                                     Join us for a day of cleaning, tree planting, and awareness-raising activities,
+                                      creating a cleaner, greener tomorrow for all. <span>more...</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <button class="action">Participate</button> -->
+                        <a href="{% url 'login1' %}"><button class="action">Participate</button></a>
+
+                    </div>
+                </div>
+        
+                <div class="item-container">
+                    <div class="img-container">
+                        <img src="{% static 'img/event-2.png' %}" alt="Event image">
+                    </div>
+        
+                    <div class="body-container">
+                        <div class="overlay"></div>
+        
+                        <div class="event-info">
+                            <p class="title">Green Sweep</p>
+                            <div class="separator"></div>
+                            <p class="info">Mathura</p>
+                            <p class="price">Free</p>
+        
+                            <div class="additional-info">
+                                <p class="info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Gla university, Mathura
+                                </p>
+                                <p class="info">
+                                    <i class="far fa-calendar-alt"></i>
+                                    Sat, Oct 13, 10:00 AM EDT
+                                </p>
+        
+                                <p class="info description">
+                                    Welcome!  A community-driven event dedicated to environmental stewardship. Join us for a day of cleaning. Together, we make a difference. <span>more...</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <button class="action">Participate</button> -->
+                        <a href="{% url 'login1' %}"><button class="action">Participate</button></a>
+
+                    </div>
+                </div>
+        
+                <div class="item-container">
+                    <div class="img-container">
+                        <img src="{% static 'img/event-3.jpg' %}" alt="Event image">
+                    </div>
+        
+                    <div class="body-container">
+                        <div class="overlay"></div>
+        
+                        <div class="event-info">
+                            <p class="title">Sparkling Streets</p>
+                            <div class="separator"></div>
+                            <p class="info">Mathura</p>
+                            <p class="price">Free</p>
+        
+                            <div class="additional-info">
+                                <p class="info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Gla university, Mathura
+                                </p>
+                                <p class="info">
+                                    <i class="far fa-calendar-alt"></i>
+                                    Sat, Oct 10, 10:00 AM EDT
+                                </p>
+        
+                                <p class="info description">
+                                    Welcome! A community-driven cleanup extravaganza, transforming neighborhoods into gleaming havens. Join us for change! <span>more...</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <button class="action">Participate</button> -->
+                        <a href="{% url 'login1' %}"><button class="action">Participate</button></a>
+
+                    </div>
+                </div>
+        
+                <div class="item-container">
+                    <div class="img-container">
+                        <img src="{% static 'img/event-4.jpg' %}" alt="Event image">
+                    </div>
+        
+                    <div class="body-container">
+                        <div class="overlay"></div>
+        
+                        <div class="event-info">
+                            <p class="title">Clean and Green Rally</p>
+                            <div class="separator"></div>
+                            <p class="info">Mathura</p>
+                            <p class="price">Free</p>
+        
+                            <div class="additional-info">
+                                <p class="info">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    Gla university, Mathura
+                                </p>
+                                <p class="info">
+                                    <i class="far fa-calendar-alt"></i>
+                                    Sat, Oct 17, 10:00 AM EDT
+                                </p>
+        
+                                <p class="info description">
+                                    Welcome! Join us for a community event advocating eco-consciousness and a litter-free environment.<span>more...</span>
+                                </p>
+                            </div>
+                        </div>
+                        <!-- <button class="action">Participate</button> -->
+                        <a href="{% url 'login1' %}"><button class="action">Participate</button></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <footer id="Contact">
+        <div class="content">
+          <div class="left box">
+            <div class="upper">
+              <div class="topic">About us</div>
+              <p>Swipe2Clean revolutionizes domestic waste management with a user-friendly platform. We empower individuals 
+                to effortlessly schedule, track, and optimize waste collection, promoting a greener, more sustainable future
+                 for communities worldwide.</p>
+            </div>
+            <div class="lower">
+              <div class="topic">Contact us</div>
+              <div class="phone">
+                <a href="#"><i class="fas fa-phone-volume"></i>+91 7500211114</a>
+              </div>
+              <div class="email">
+                <a href="https://nagarnigamagra.com/contacts/"><i class="fas fa-envelope"></i>Swipe2Clean@gmail.com</a>
+              </div>
+            </div>
+          </div>
+          <div class="middle box">
+            <div class="topic">Our Services</div>
+            <div><a href="https://aarogyasetu.gov.in/">AarogyaSetu</a></div>
+            <div><a href="https://nagarnigamagra.com/">NagarNigamAgra</a></div>
+            <div><a href="https://swachhbharatmission.gov.in/sbmcms/index.htm">SwachBharat</a></div>
+            <div><a href="https://www.india.gov.in/">BharatSarkaar</a></div>
+            <div><a href="https://www.safaikarmachariandolan.org/">SafaiAndolan</a></div>
+            
+          </div>
+          <div class="right box">
+            <div class="topic">Get Notifications</div>
+            <form name="submit-to-google-sheet">
+              <input type="text" placeholder="Enter email address" name="email">
+              <input type="submit" value="Send">
+            </form>
+            <span id="msg"></span>
+              <div class="media-icons">
+                <a href="https://www.facebook.com/groups/2792504170785222/"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/agranagarnigam/"><i class="fab fa-instagram"></i></a>
+                <a href="https://twitter.com/agranagarnigam?lang=en"><i class="fab fa-twitter"></i></a>
+                <a href="https://www.youtube.com/user/narendramodi"><i class="fab fa-youtube"></i></a>
+                <a href="https://www.linkedin.com/company/nagar-palika-nigam/about/"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="bottom">
+          <p>Copyright © 2020 <a href="#">Swipe2Clean</a> All rights reserved</p>
+        </div>
+      </footer>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://kit.fontawesome.com/58a810656e.js" crossorigin="anonymous"></script>
+    <script>
+        var typeData = new Typed(".tagline", {
+          strings: [
+            "स्वच्छ घर, स्वस्थ भविष्य",
+            "आपका कचरा, हमारी ज़िम्मेदारी",
+            "कचरा नहीं, संसाधन",
+            "घरेलु कचरा प्रबंधन मिशन",
+            "स्वच्छ घर, स्वच्छ भारत",
+            "कूड़ा नहीं, कुशलता",
+            
+          ],
+          loop: true,
+          typeSpeed: 100,
+          backSpeed: 80,
+          backDelay: 1000,
+        });
+      </script>
+
+      <script>
+            function toggle_visibility() {
+       var e = document.getElementById('feedback-main');
+       if(e.style.display == 'block')
+          e.style.display = 'none';
+       else
+          e.style.display = 'block';
+    }
+      </script>
+      <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbxBqQd2m4ea_XLp2zM1fWuOCpWPkZ9wxFirITjQWMuhC1zFXb4Lvu7gGSAIcOkc0URZKA/exec'
+        const form = document.forms['submit-to-google-sheet']
+        const msg=document.getElementById('msg')  
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => {
+                msg.innerHTML="Thank you for submission"
+            })
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+
+</body>
+</html>
